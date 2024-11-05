@@ -1,0 +1,39 @@
+<div class="container d-flex vh-100">
+    <div class="row w-100 align-items-center justify-content-center m-4 ">
+        <form class="col-lg-6 col-md-6 bg-secondary-subtle rounded p-4 shadow"  #signUpForm="ngForm">
+            <div class="d-flex justify-content-center">
+                <h1>Cadastre-se!</h1>
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" #nome="ngModel"
+                        required [(ngModel)]="model.nome" name="nome">
+                <div [hidden]="nome.valid || nome.pristine" class="text-danger m-0 p-0">Campo Obrigatório</div>
+            </div>
+            <div class="form-group">
+                <label for="nome">Email</label>
+                <input type="text" class="form-control" id="email" #email="ngModel"
+                    pattern="^[a-z0-9._%+-]+@comercial\.[a-z]{2,4}$" required [(ngModel)]="model.email" name="email">
+                    <div [hidden]="email.untouched || email.pristine" >
+                        <div [hidden]="email.valid" class="text-danger m-0 p-0">
+                            <p *ngIf="email.errors?.['required']">Campo Obrigatório</p>
+                            <p *ngIf="email.errors?.['pattern']">Email inválido</p>
+                          </div>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="text" class="form-control" id="senha" #senha="ngModel"
+                        required [(ngModel)]="model.senha" name="senha">
+                <div [hidden]="senha.valid || senha.pristine" class="text-danger m-0 p-0">Campo Obrigatório</div>
+
+            </div>
+            <div class="d-flex justify-content-evenly mt-3">
+                <button type="button" class="btn btn-primary" [disabled]="signUpForm.invalid"
+                    (click)="newVendedor(); signUpForm.reset()">Cadastrar</button>
+            </div>
+            <h4 class="text-center text-danger" [hidden]="error == undefined">Erro: Usuário já cadastrado</h4>
+
+        </form>
+    </div>
+</div>

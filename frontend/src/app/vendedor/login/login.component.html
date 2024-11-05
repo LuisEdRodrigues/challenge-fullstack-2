@@ -1,0 +1,30 @@
+<div class="container d-flex vh-100">
+    <div class="row w-100 align-items-center justify-content-center m-4 ">
+        <form class="col-lg-6 col-md-6 bg-secondary-subtle rounded p-4 shadow"  #loginForm="ngForm">
+            <div class="d-flex justify-content-center">
+                <h1>Faça o Login</h1>
+            </div>
+            <div class="form-group">
+                <label for="nome">Email</label>
+                <input type="text" class="form-control" id="email" #nome="ngModel"
+                        required [(ngModel)]="credentials.email" name="email">
+                <div [hidden]="nome.valid || nome.pristine" class="text-danger m-0 p-0">Campo Obrigatório</div>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="text" class="form-control" id="senha" #senha="ngModel"
+                        required [(ngModel)]="credentials.senha" name="senha">
+                <div [hidden]="senha.valid || senha.pristine" class="text-danger m-0 p-0">Campo Obrigatório</div>
+            </div>
+            <div class="d-flex justify-content-evenly mt-3">
+                <button type="button" class="btn btn-primary"
+                    (click)="doLogin(); loginForm.reset()" [disabled]="loginForm.invalid">Fazer Login</button>
+                <button type="button" class="btn btn-primary"
+                    (click)="navCadastrar(); loginForm.reset()">Cadastrar</button>
+            </div>
+            <h4 class="text-center text-danger" [hidden]="error == undefined">Erro: Email ou senha incorretas </h4>
+           
+
+        </form>
+    </div>
+</div>

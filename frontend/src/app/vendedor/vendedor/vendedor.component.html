@@ -1,0 +1,40 @@
+<div class="container-fluid p-0">
+    <a routerLink="/logout" class="position-relative top-0 p-3">Logout</a>
+    <accordion [isAnimated]="true">
+        <accordion-group heading="Clientes Disponíveis" [isOpen]="true" class="w-100" >
+            <div class="row d-flex justify-content-between flex-wrap m-0 w-100">
+                <ng-container *ngFor="let cliente of clientes">
+                    <div *ngIf="!cliente.contatado" class="card text-center col-lg-3 col-md-4 col-sm-4 my-4 mx-5 shadow border-0 p-0">
+                        <div class="card-header border-0 bg-dark-subtle">{{cliente.nome}}</div>
+                        <div class="card-body bg-light">
+                            <p class="card-text">{{cliente.email}}</p>
+                            <p class="card-text">{{cliente.telefone}}</p>
+                            <p class="card-text">{{cliente.cidade}}</p>
+                            <p class="card-text border-bottom pb-2 border-secondary">{{cliente.empresa}}</p>
+                            <button (click)="fazerNegocio(cliente.email)" class="btn btn-primary">Fazer Negócio</button>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </accordion-group>
+        <accordion-group heading="Clientes Contatados por Você">
+            <div class="row d-flex justify-content-between flex-wrap m-0">
+                <ng-container *ngFor="let cliente of contatados">
+                    <div class="card text-center col-lg-3 col-md-4 col-sm-4 my-4 mx-5 shadow border-0 p-0">
+                        <div class="card-header border-0 bg-dark-subtle">{{cliente.nome}}</div>
+                        <div class="card-body bg-light">
+                            <p class="card-text">{{cliente.email}}</p>
+                            <p class="card-text">{{cliente.telefone}}</p>
+                            <p class="card-text">{{cliente.cidade}}</p>
+                            <p class="card-text border-bottom pb-2 border-secondary">{{cliente.empresa}}</p>
+                            <button (click)="rmContato(cliente.email)" class="btn btn-primary">Cancelar Negócio</button>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </accordion-group>
+    </accordion>
+    
+</div>
+
+

@@ -1,0 +1,14 @@
+@import url('https://unpkg.com/bootstrap@5.3/dist/css/bootstrap.min.css');
+@import 'ngx-toastr/toastr';
+
+
+.form-group{
+    margin: 1em;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948;
+}
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442;
+}
